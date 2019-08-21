@@ -1,0 +1,32 @@
+This Mod is the Successor of my 2 other mods "NPC Protector" and "Boss Controll"
+
+Are you annoyed from a certain type of Enemy and want to get rid of them all forever?
+
+Do you have a Dedicated Server and want more Control over NPCs?
+
+Wanna prevent your Town-NPCs from dying everytime a friend of yours decides he wants to spawn that boss too close to the Town-NPCs?
+
+Or do you want to prevent griefers in a public modded Server from starting hardmode by killing the wall of flesh?
+
+
+Wanna have all that in combination with Ingame-Changeable settins without having to reload?
+
+
+Then Oh-Boy do I have a Mod for you!
+
+
+This Mod has 2 Main functions
+
+1. It lets you disable any enemy Spawn you want 
+2. You can make any Type of NPC invincible
+
+And the best part?
+It's compatible with HEROsMod! If it's detected to be installed on your Server, we add our own Permission to HEROsMods Permission System!
+
+
+How do you configure the Mod?
+Esc -> Settings -> Mod Settings -> NPC Control
+
+You can add NPCs to one of the 2 lists by clicking the + and clicking on the empty field to choose an NPC
+
+Or delete an NPC out of the lists by clicking the trashcan to the left of each NPC.

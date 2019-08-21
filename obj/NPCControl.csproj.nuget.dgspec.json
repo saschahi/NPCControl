@@ -1,0 +1,46 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj": {}
+  },
+  "projects": {
+    "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj",
+        "projectName": "NPCControl",
+        "projectPath": "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj",
+        "packagesPath": "C:\\Users\\Saschahi\\.nuget\\packages\\",
+        "outputPath": "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Saschahi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    }
+  }
+}
