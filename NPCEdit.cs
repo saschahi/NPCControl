@@ -19,7 +19,7 @@ namespace NPCControl
         public override bool PreAI(NPC npc)
         {
             NPCDefinition test = new NPCDefinition(npc.type);
-
+            
 
             //Unspawnbar
             if (Karl.DoNotSpawn.Contains(test))
@@ -54,6 +54,8 @@ namespace NPCControl
                     }
                     else
                     {
+                        //"best way imo is just to override CanBeHitByItem and CanBeHitByProjectile, then return false if the npc shouldn't be hittable, null otherwise"
+
                         npc.dontTakeDamage = true;
                         npc.dontTakeDamageFromHostiles = true;
                         npc.lifeRegen = npc.lifeMax;
