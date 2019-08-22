@@ -9,13 +9,10 @@ namespace NPCControl
 {
     class NPCEdit : GlobalNPC
     {
-        //static Dictionary<int, bool> npcInvincible;
-        //static ConfigToucher Karl = new ConfigToucher();
         public static int Timer = 0;
         public static NPCConfig Karl = new NPCConfig();
-        //public static List<int> ListeUnbesiegbarer = new List<int>();
-        public static Dictionary<int, int> ListeUnbesiegbarer = new Dictionary<int, int>();
-        public static Dictionary<int, int> ListeUnbesiegbarerLR = new Dictionary<int, int>();
+        public static Dictionary<int, bool> ListeUnbesiegbarer = new Dictionary<int, bool>();
+        public static Dictionary<int, bool> ListeUnbesiegbarerLR = new Dictionary<int, bool>();
         public override bool PreAI(NPC npc)
         {
             NPCDefinition test = new NPCDefinition(npc.type);
@@ -24,8 +21,13 @@ namespace NPCControl
             //Unspawnbar
             if (Karl.DoNotSpawn.Contains(test))
             {
+                
                 npc.active = false;
                 
+                //for some reason this breaks my mod...
+                //Main.NewText(npc.TypeName + " was deactivated by an Admin", Color.Red);
+                
+
                 //If he doesn't spawn we can stop right here
                 if (Timer > 3000)
                 {
@@ -44,8 +46,8 @@ namespace NPCControl
                 {
                     if (!ListeUnbesiegbarer.ContainsKey(npc.type))
                     {
-                        ListeUnbesiegbarer.Add(npc.type, npc.lifeMax);
-                        ListeUnbesiegbarerLR.Add(npc.type, npc.lifeRegen);
+                        ListeUnbesiegbarer.Add(npc.type, npc.dontTakeDamage);
+                        ListeUnbesiegbarerLR.Add(npc.type, npc.dontTakeDamageFromHostiles);
                     }
                     if (npc.boss)
                     {
@@ -55,14 +57,8 @@ namespace NPCControl
                     else
                     {
                         //"best way imo is just to override CanBeHitByItem and CanBeHitByProjectile, then return false if the npc shouldn't be hittable, null otherwise"
-
                         npc.dontTakeDamage = true;
                         npc.dontTakeDamageFromHostiles = true;
-                        npc.lifeRegen = npc.lifeMax;
-                        if (npc.lifeMax < 1000000)
-                        {
-                            npc.lifeMax = 1000000;
-                        }
                     }
 
                     //getting here means atleast 1 is active. going further would GUARANTEE that both are false.
@@ -94,18 +90,11 @@ namespace NPCControl
                 {
                     if (Main.npc[i].active && Main.npc[i].type == npc.type)
                     {
-                        Main.npc[i].dontTakeDamage = false;
-                        Main.npc[i].dontTakeDamageFromHostiles = false;
-                        Main.npc[i].lifeRegen = ListeUnbesiegbarerLR[npc.type];
-                        Main.npc[i].lifeMax = ListeUnbesiegbarer[npc.type];
+                        Main.npc[i].dontTakeDamage = ListeUnbesiegbarer[npc.type];
+                        Main.npc[i].dontTakeDamageFromHostiles = ListeUnbesiegbarerLR[npc.type];
                         Main.npc[i].life = Main.npc[i].lifeMax;
-                        
                     }
-
-
                 }
-                 
-
                 ListeUnbesiegbarer.Remove(npc.type);
                 ListeUnbesiegbarerLR.Remove(npc.type);
             }
@@ -116,7 +105,6 @@ namespace NPCControl
                 Karl = mod.GetConfig<NPCConfig>();
                 Timer = 0;
             }
-
             Timer++;
             return base.PreAI(npc);
         }

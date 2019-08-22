@@ -23,23 +23,16 @@ namespace NPCControl
 
         
 
-        
-
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
         {
             if (NPCControl.instance.herosmod != null)
             {
-                //alternative?
+                //find a better alternative?
                 if (NPCControl.instance.herosmod.Call("HasPermission", whoAmI, NPCControl.heropermission) is bool result && result)
                 {
                     return true;
                 }
 
-                //doesn't want to work...
-                /*if(NPCControl.instance.getPermission())
-                {
-                    return true;
-                }*/
             }
             else
             {

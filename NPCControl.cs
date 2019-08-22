@@ -22,13 +22,6 @@ namespace NPCControl
 
         public override void Unload()
         {
-            /*
-            NPCEdit.Karl = null;
-            NPCEdit.ListeUnbesiegbarer = null;
-            NPCEdit.ListeUnbesiegbarerLR = null;
-            NPCConfig.Instance = null;
-            
-            */
             instance = null;
             herosmod = null;
         }
@@ -47,8 +40,6 @@ namespace NPCControl
 
         public NPCControl GetInstance()
         {
-
-
             return instance;
         }
 
