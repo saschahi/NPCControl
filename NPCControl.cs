@@ -36,6 +36,7 @@ namespace NPCControl
         {
             instance = this;
             herosmod = ModLoader.GetMod("HEROsMod");
+            
         }
 
         public NPCControl GetInstance()
