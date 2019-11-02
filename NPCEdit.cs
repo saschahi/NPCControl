@@ -138,7 +138,8 @@ namespace NPCControl
         
         public void GetNewConfig()
         {
-            Karl = mod.GetConfig<NPCConfig>();
+            //Karl = mod.GetConfig<NPCConfig>();
+            Karl = ModContent.GetInstance<NPCConfig>();
         }
 
 

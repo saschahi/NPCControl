@@ -8,6 +8,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Terraria.ModLoader;
 
 namespace NPCControl
 {
@@ -63,7 +64,8 @@ namespace NPCControl
                 string json = JsonConvert.SerializeObject(Hero, SerializerSettings);
                 File.WriteAllText(path, json);
             }
-            NPCEdit.Karl = mod.GetConfig<NPCConfig>();
+            //NPCEdit.Karl = mod.GetConfig<NPCConfig>();
+            NPCEdit.Karl = ModContent.GetInstance<NPCConfig>();
         }
 
 

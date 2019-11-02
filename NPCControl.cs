@@ -24,6 +24,7 @@ namespace NPCControl
         {
             instance = null;
             herosmod = null;
+            hasPermission = false;
         }
 
 

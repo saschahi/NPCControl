@@ -1,6 +1,6 @@
 displayName = NPC Control
 author = Saschahi
-version = 1.0.7
+version = 1.0.8
 weakReferences = HEROsMod
 homepage = https://discord.gg/9dauEnQ
 side = Both
