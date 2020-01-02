@@ -30,4 +30,3 @@ G:\Sascha\Dokumente\My Games\Terraria\ModLoader\Mod Sources\NPCControl\bin\Debug
 G:\Sascha\Dokumente\My Games\Terraria\ModLoader\Mod Sources\NPCControl\obj\Debug\net45\NPCControl.csproj.CopyComplete
 G:\Sascha\Dokumente\My Games\Terraria\ModLoader\Mod Sources\NPCControl\obj\Debug\net45\NPCControl.dll
 G:\Sascha\Dokumente\My Games\Terraria\ModLoader\Mod Sources\NPCControl\obj\Debug\net45\NPCControl.pdb
-G:\Sascha\Dokumente\My Games\Terraria\ModLoader\Mod Sources\NPCControl\bin\Debug\net45\HEROsMod_v0.2.6.dll

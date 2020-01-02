@@ -18,6 +18,10 @@ namespace NPCControl
 
         public override bool PreAI(NPC npc)
         {
+            if (Karl == null)
+            {
+                return base.PreAI(npc);
+            }
             if (npc.active)
             {
                 NPCDefinition test = new NPCDefinition(npc.type);
@@ -119,7 +123,7 @@ namespace NPCControl
             }
             return base.PreAI(npc);
         }
-
+        // TESTSTUFF! DOESNT WORK!
         /*public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
             NPCDefinition test = new NPCDefinition();

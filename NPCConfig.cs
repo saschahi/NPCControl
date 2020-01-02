@@ -49,12 +49,13 @@ namespace NPCControl
             return false;
         }
 
-        public static JsonSerializerSettings SerializerSettings => serializerSettings;
+        //public static JsonSerializerSettings SerializerSettings => serializerSettings;
 
-        private ConfigSpagetthi Hero = new ConfigSpagetthi();
+        //private ConfigSpagetthi Hero = new ConfigSpagetthi();
 
         public override void OnChanged()
         {
+            /* LEGACYSTUFF
             if(Main.netMode == NetmodeID.Server)
             {
                 Hero = new ConfigSpagetthi(NPCConfig.Instance.MakeInvincible, NPCConfig.Instance.DoNotSpawn);
@@ -64,7 +65,9 @@ namespace NPCControl
                 string json = JsonConvert.SerializeObject(Hero, SerializerSettings);
                 File.WriteAllText(path, json);
             }
+            */
             //NPCEdit.Karl = mod.GetConfig<NPCConfig>();
+
             NPCEdit.Karl = ModContent.GetInstance<NPCConfig>();
         }
 
@@ -77,7 +80,7 @@ namespace NPCControl
         */
         //internal static readonly IDictionary<string, List<ModConfig>> Configs = new Dictionary<string, List<ModConfig>>();
 
-
+/*
 
         public static string ModConfigPath = Path.Combine(Main.SavePath, "Mod Configs");
 
@@ -183,5 +186,6 @@ namespace NPCControl
             }
             return props;
         }
+*/
     }
 }

@@ -10,9 +10,4 @@
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
-  <ItemGroup>
-    <Reference Include="HEROsMod">
-      <HintPath>..\..\references\mods\HEROsMod_v0.2.6.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>
