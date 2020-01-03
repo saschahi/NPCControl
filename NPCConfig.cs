@@ -25,6 +25,10 @@ namespace NPCControl
         [Tooltip("All NPCs in here will become Invincible")]
         public List<NPCDefinition> MakeInvincible { get; set; } = new List<NPCDefinition>();
 
+        [Label("Make All Town-NPCs invincible")]
+        [Tooltip("Will automatically make Town-NPCs invincible (Guide etc.) without having to put them in the list above")]
+        public bool TownInvincible { get; set; } = new bool();
+
         [Label("Disabled Enemies")]
         [Tooltip("All NPCs in here will be prevented from Spawning")]
         public List<NPCDefinition> DoNotSpawn { get; set; } = new List<NPCDefinition>();

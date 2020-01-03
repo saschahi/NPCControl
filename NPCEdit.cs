@@ -9,7 +9,6 @@ namespace NPCControl
 {
     class NPCEdit : GlobalNPC
     {
-        //public static int Timer = 0;
         public static int Timer2 = 0;
         public static NPCConfig Karl = new NPCConfig();
         public static Dictionary<int, bool> ListeUnbesiegbarer = new Dictionary<int, bool>();
@@ -30,26 +29,12 @@ namespace NPCControl
                 //Unspawnbar
                 if (Karl.DoNotSpawn.Contains(test))
                 {
-
                     npc.active = false;
-
-                    //for some reason this breaks my mod...
-                    //Main.NewText(npc.TypeName + " was deactivated by an Admin", Color.Red);
-
-
-                    /*If he doesn't spawn we can stop right here
-                    if (Timer > 3000)
-                    {
-                        Karl = mod.GetConfig<NPCConfig>();
-                        Timer = 0;
-                    }
-                    Timer++;*/
                     return base.PreAI(npc);
                 }
 
-
                 //Unbesiegbar
-                else if (Karl.MakeInvincible.Contains(test))
+                else if (Karl.MakeInvincible.Contains(test) || npc.townNPC && Karl.TownInvincible)
                 {
                     if (!npc.dontTakeDamage)
                     {
@@ -62,7 +47,6 @@ namespace NPCControl
                         {
                             Main.NewText("Invincible Bosses won't be spawned", Color.Red);
                             npc.active = false;
-
                         }
                         else
                         {
@@ -70,29 +54,27 @@ namespace NPCControl
                             npc.dontTakeDamage = true;
                             npc.dontTakeDamageFromHostiles = true;
                         }
-
-                        //getting here means atleast 1 is active. going further would GUARANTEE that both are false.
-                        /*If he doesn't spawn we can stop right here
-                        if (Timer > 3000)
-                        {
-                            Karl = mod.GetConfig<NPCConfig>();
-                            Timer = 0;
-                        }
-                        Timer++;*/
                         return base.PreAI(npc);
                     }
                     else
                     {
-                        /*If he doesn't spawn we can stop right here
-                        if (Timer > 3000)
-                        {
-                           Karl = mod.GetConfig<NPCConfig>();
-                            Timer = 0;
-                        }
-                        Timer++;*/
                         return base.PreAI(npc);
                     }
                 }
+
+                //Just squeezing my townNPC check in here
+                /*else if (npc.townNPC && Karl.TownInvincible)
+                {
+
+
+                    if (npc.dontTakeDamage == false)
+                    {
+                        npc.dontTakeDamage = true;
+                        npc.dontTakeDamageFromHostiles = true;
+                        return base.PreAI(npc);
+                    }
+                    return base.PreAI(npc);
+                }*/
 
                 //if both are false, Invincibility has to be undone.
                 //regardless of how shitty of a way this is, this uses the least ressources.
@@ -110,15 +92,6 @@ namespace NPCControl
                     ListeUnbesiegbarer.Remove(npc.type);
                     ListeUnbesiegbarerLR.Remove(npc.type);
                 }
-
-
-                /*If he doesn't spawn we can stop right here
-                if (Timer > 3000)
-                {
-                    Karl = mod.GetConfig<NPCConfig>();
-                    Timer = 0;
-                }
-                Timer++;*/
                 return base.PreAI(npc);
             }
             return base.PreAI(npc);
@@ -142,7 +115,6 @@ namespace NPCControl
         
         public void GetNewConfig()
         {
-            //Karl = mod.GetConfig<NPCConfig>();
             Karl = ModContent.GetInstance<NPCConfig>();
         }
 
