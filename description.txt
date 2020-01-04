@@ -30,3 +30,5 @@ Esc -> Settings -> Mod Settings -> NPC Control
 You can add NPCs to one of the 2 lists by clicking the + and clicking on the empty field to choose an NPC
 
 Or delete an NPC out of the lists by clicking the trashcan to the left of each NPC.
+
+If you want Changelogs, please join the Discord (Homepage button)

@@ -25,15 +25,14 @@ namespace NPCControl
             {
                 NPCDefinition test = new NPCDefinition(npc.type);
 
-
-                //Unspawnbar
+                //Do not Spawn
                 if (Karl.DoNotSpawn.Contains(test))
                 {
                     npc.active = false;
                     return base.PreAI(npc);
                 }
 
-                //Unbesiegbar
+                //Invincible
                 else if (Karl.MakeInvincible.Contains(test) || npc.townNPC && Karl.TownInvincible)
                 {
                     if (!npc.dontTakeDamage)
@@ -43,7 +42,7 @@ namespace NPCControl
                             ListeUnbesiegbarer.Add(npc.type, npc.dontTakeDamage);
                             ListeUnbesiegbarerLR.Add(npc.type, npc.dontTakeDamageFromHostiles);
                         }
-                        if (npc.boss)
+                        if (npc.boss && Karl.PreventInvincibleBosses)
                         {
                             Main.NewText("Invincible Bosses won't be spawned", Color.Red);
                             npc.active = false;
@@ -61,20 +60,6 @@ namespace NPCControl
                         return base.PreAI(npc);
                     }
                 }
-
-                //Just squeezing my townNPC check in here
-                /*else if (npc.townNPC && Karl.TownInvincible)
-                {
-
-
-                    if (npc.dontTakeDamage == false)
-                    {
-                        npc.dontTakeDamage = true;
-                        npc.dontTakeDamageFromHostiles = true;
-                        return base.PreAI(npc);
-                    }
-                    return base.PreAI(npc);
-                }*/
 
                 //if both are false, Invincibility has to be undone.
                 //regardless of how shitty of a way this is, this uses the least ressources.
