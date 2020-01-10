@@ -28,6 +28,7 @@ namespace NPCControl
 
         [Label("Make All Town-NPCs invincible")]
         [Tooltip("Will automatically make Town-NPCs invincible (Guide etc.) without having to put them in the list above")]
+        [DefaultValue(false)]
         public bool TownInvincible { get; set; } = new bool();
 
         //Looking into making this possible...

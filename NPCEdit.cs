@@ -9,7 +9,8 @@ namespace NPCControl
 {
     class NPCEdit : GlobalNPC
     {
-        public static int Timer2 = 0;
+        public static int Timer = 0;
+        public static int Timermax = 200;
         public static NPCConfig Karl = new NPCConfig();
         public static Dictionary<int, bool> ListeUnbesiegbarer = new Dictionary<int, bool>();
         public static Dictionary<int, bool> ListeUnbesiegbarerLR = new Dictionary<int, bool>();
@@ -17,9 +18,45 @@ namespace NPCControl
 
         public override bool PreAI(NPC npc)
         {
+            if (Timer >= Timermax)
+            {
+                Timer = 0;
+                NPC editednpc = EditNPC(npc);
+                return base.PreAI(editednpc);
+            }
+            Timer++;
+            return base.PreAI(npc);
+        }
+
+        // TESTSTUFF! DOESNT WORK! EDITSPAWNPOOL DOESN'T ALLOW EDIT OF VANILLA NPCS
+        /*public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+        {
+            NPCDefinition test = new NPCDefinition();
+            IDictionary<int, float> blub = new Dictionary<int, float>();
+
+            foreach (var item in pool)
+            {
+                test = new NPCDefinition(item.Key + 1);
+                if (!Karl.DoNotSpawn.Contains(test))
+                {
+                    blub.Add(item);
+                }
+            }
+            base.EditSpawnPool(blub, spawnInfo);
+        }*/
+
+        public override void SetDefaults(NPC npc)
+        {
+            NPC editednpc = EditNPC(npc);
+            base.SetDefaults(editednpc);
+            return;
+        }
+
+        public NPC EditNPC(NPC npc)
+        {
             if (Karl == null)
             {
-                return base.PreAI(npc);
+                return npc;
             }
             if (npc.active)
             {
@@ -29,7 +66,8 @@ namespace NPCControl
                 if (Karl.DoNotSpawn.Contains(test))
                 {
                     npc.active = false;
-                    return base.PreAI(npc);
+
+                    return npc;
                 }
 
                 //Invincible
@@ -37,27 +75,38 @@ namespace NPCControl
                 {
                     if (!npc.dontTakeDamage)
                     {
+                        //Make a "Backup" of the stats of the NPC before
                         if (!ListeUnbesiegbarer.ContainsKey(npc.type))
                         {
                             ListeUnbesiegbarer.Add(npc.type, npc.dontTakeDamage);
                             ListeUnbesiegbarerLR.Add(npc.type, npc.dontTakeDamageFromHostiles);
                         }
+                        //Anti-Invincible-Boss-Maker
                         if (npc.boss && Karl.PreventInvincibleBosses)
                         {
                             Main.NewText("Invincible Bosses won't be spawned", Color.Red);
                             npc.active = false;
                         }
+                        //Make NPC Invincible
                         else
                         {
                             //"best way imo is just to override CanBeHitByItem and CanBeHitByProjectile, then return false if the npc shouldn't be hittable, null otherwise"
-                            npc.dontTakeDamage = true;
-                            npc.dontTakeDamageFromHostiles = true;
+                            if (npc.townNPC && Karl.TownInvincible && Karl.MakeInvincible.Contains(test))
+                            {
+                                npc.dontTakeDamage = false;
+                                npc.dontTakeDamageFromHostiles = false;
+                            }
+                            else
+                            {
+                                npc.dontTakeDamage = true;
+                                npc.dontTakeDamageFromHostiles = true;
+                            }
                         }
-                        return base.PreAI(npc);
+                        return npc;
                     }
                     else
                     {
-                        return base.PreAI(npc);
+                        return npc;
                     }
                 }
 
@@ -77,27 +126,11 @@ namespace NPCControl
                     ListeUnbesiegbarer.Remove(npc.type);
                     ListeUnbesiegbarerLR.Remove(npc.type);
                 }
-                return base.PreAI(npc);
+                return npc;
             }
-            return base.PreAI(npc);
+            return npc;
         }
-        // TESTSTUFF! DOESNT WORK!
-        /*public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
-        {
-            NPCDefinition test = new NPCDefinition();
-            IDictionary<int, float> blub = new Dictionary<int, float>();
 
-            foreach (var item in pool)
-            {
-                test = new NPCDefinition(item.Key + 1);
-                if (!Karl.DoNotSpawn.Contains(test))
-                {
-                    blub.Add(item);
-                }
-            }
-            base.EditSpawnPool(blub, spawnInfo);
-        }*/
-        
         public void GetNewConfig()
         {
             Karl = ModContent.GetInstance<NPCConfig>();

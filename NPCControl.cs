@@ -27,7 +27,6 @@ namespace NPCControl
             hasPermission = false;
         }
 
-
         public override void PostAddRecipes()
         {
             SetupHerosMod();
