@@ -18,7 +18,7 @@ namespace NPCControl
 
         public override bool PreAI(NPC npc)
         {
-            if (Timer >= Timermax)
+            if (Timer >= Karl.TicksBetweenChecks)
             {
                 Timer = 0;
                 NPC editednpc = EditNPC(npc);
@@ -106,6 +106,11 @@ namespace NPCControl
                     }
                     else
                     {
+                        if (npc.townNPC && Karl.TownInvincible && Karl.MakeInvincible.Contains(test))
+                        {
+                            npc.dontTakeDamage = false;
+                            npc.dontTakeDamageFromHostiles = false;
+                        }
                         return npc;
                     }
                 }

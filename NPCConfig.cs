@@ -21,6 +21,11 @@ namespace NPCControl
         // This reduces code from "mod.GetConfig<ExampleConfigServer>().DisableExampleWings" to "ExampleConfigServer.Instance.DisableExampleWings". It's just a style choice.
         public static NPCConfig Instance;
 
+        [Label("Time in Ticks between NPC Checks")]
+        [Range(0, 1000)]
+        [Slider]
+        [DefaultValue(200)]
+        public int TicksBetweenChecks;
 
         [Label("Invincible NPCs")]
         [Tooltip("All NPCs in here will become Invincible")]
@@ -45,8 +50,6 @@ namespace NPCControl
         [Label("Disabled Enemies")]
         [Tooltip("All NPCs in here will be prevented from Spawning")]
         public List<NPCDefinition> DoNotSpawn { get; set; } = new List<NPCDefinition>();
-
-        
 
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
         {
