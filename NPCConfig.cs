@@ -60,7 +60,6 @@ namespace NPCControl
                 {
                     return true;
                 }
-
             }
             else
             {

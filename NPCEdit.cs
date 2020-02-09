@@ -18,16 +18,30 @@ namespace NPCControl
 
         public override bool PreAI(NPC npc)
         {
-            if (Timer >= Karl.TicksBetweenChecks)
+            try
             {
-                Timer = 0;
-                NPC editednpc = EditNPC(npc);
-                return base.PreAI(editednpc);
+                if (Timer >= Karl.TicksBetweenChecks)
+                {
+                    Timer = 0;
+                    NPC editednpc = EditNPC(npc);
+                    return base.PreAI(editednpc);
+                }
+                Timer++;
             }
-            Timer++;
+            catch
+            {
+                GetNewConfig();
+                if (Timer >= Karl.TicksBetweenChecks)
+                {
+                    Timer = 0;
+                    NPC editednpc = EditNPC(npc);
+                    return base.PreAI(editednpc);
+                }
+                Timer++;
+            }
             return base.PreAI(npc);
         }
-
+        
         // TESTSTUFF! DOESNT WORK! EDITSPAWNPOOL DOESN'T ALLOW EDIT OF VANILLA NPCS
         /*public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
@@ -47,8 +61,17 @@ namespace NPCControl
 
         public override void SetDefaults(NPC npc)
         {
-            NPC editednpc = EditNPC(npc);
-            base.SetDefaults(editednpc);
+            try
+            {
+                NPC editednpc = EditNPC(npc);
+                base.SetDefaults(editednpc);
+            }
+            catch
+            {
+                GetNewConfig();
+                NPC editednpc = EditNPC(npc);
+                base.SetDefaults(editednpc);
+            }
             return;
         }
 
@@ -66,7 +89,7 @@ namespace NPCControl
                 if (Karl.DoNotSpawn.Contains(test))
                 {
                     npc.active = false;
-
+                    //if he's not allowed to exist, we can just stop here.
                     return npc;
                 }
 
@@ -115,7 +138,7 @@ namespace NPCControl
                     }
                 }
 
-                //if both are false, Invincibility has to be undone.
+                //if both are false, Invincibility has to be undone (using the defaults saved above)
                 //regardless of how shitty of a way this is, this uses the least ressources.
                 else if (ListeUnbesiegbarer.ContainsKey(npc.type))
                 {
@@ -136,6 +159,7 @@ namespace NPCControl
             return npc;
         }
 
+        //actually gets never called, but it's a nice have for the future
         public void GetNewConfig()
         {
             Karl = ModContent.GetInstance<NPCConfig>();
