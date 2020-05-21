@@ -1,6 +1,6 @@
-displayName = NPC Control
+displayName = NPC Controll
 author = Saschahi
-version = 1.2.2
+version = 1.2.3
 weakReferences = HEROsMod
 homepage = https://discord.gg/9dauEnQ
 side = Both

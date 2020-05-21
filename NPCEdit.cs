@@ -99,6 +99,7 @@ namespace NPCControl
                     if (!npc.dontTakeDamage)
                     {
                         //Make a "Backup" of the stats of the NPC before
+                        //we don't wanna accidentally make an NPC Killable if he should be invincible.
                         if (!ListeUnbesiegbarer.ContainsKey(npc.type))
                         {
                             ListeUnbesiegbarer.Add(npc.type, npc.dontTakeDamage);
@@ -159,7 +160,6 @@ namespace NPCControl
             return npc;
         }
 
-        //actually gets never called, but it's a nice have for the future
         public void GetNewConfig()
         {
             Karl = ModContent.GetInstance<NPCConfig>();
