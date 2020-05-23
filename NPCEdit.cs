@@ -14,7 +14,6 @@ namespace NPCControl
         public static NPCConfig Karl = new NPCConfig();
         public static Dictionary<int, bool> ListeUnbesiegbarer = new Dictionary<int, bool>();
         public static Dictionary<int, bool> ListeUnbesiegbarerLR = new Dictionary<int, bool>();
-        //private NPCDefinition test;
 
         public override bool PreAI(NPC npc)
         {

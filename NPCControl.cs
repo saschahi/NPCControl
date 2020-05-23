@@ -16,8 +16,6 @@ namespace NPCControl
         public NPCControl()
         {
 
-
-
         }
 
         public override void Unload()
@@ -36,7 +34,6 @@ namespace NPCControl
         {
             instance = this;
             herosmod = ModLoader.GetMod("HEROsMod");
-            
         }
 
         public NPCControl GetInstance()
@@ -90,8 +87,6 @@ namespace NPCControl
         {
             return "This button doesn't have a function yet";
         }
-
-        
 
         public bool getPermission()
         {
