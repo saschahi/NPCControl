@@ -11,3 +11,15 @@ obj/Debug/net45/NPCControl.csprojAssemblyReference.cache
 obj/Debug/net45/NPCControl.csproj.CoreCompileInputs.cache
 obj/Debug/net45/NPCControl.dll
 obj/Debug/net45/NPCControl.pdb
+bin/Debug/net45/Newtonsoft.Json.dll
+bin/Debug/net45/NPCControl.dll
+bin/Debug/net45/NPCControl.pdb
+bin/Debug/net45/Terraria.Libraries.JSON.NET.Newtonsoft.Json.dll
+bin/Debug/net45/tModLoader.exe
+.vs/NPCControl/v16/.suo
+.vs/NPCControl/DesignTimeBuild/.dtbcache.v2
+obj/Debug/net45/NPCControl.csproj.CoreCompileInputs.cache
+obj/Debug/net45/NPCControl.csproj.FileListAbsolute.txt
+obj/Debug/net45/NPCControl.csprojAssemblyReference.cache
+obj/Debug/net45/NPCControl.dll
+obj/Debug/net45/NPCControl.pdb

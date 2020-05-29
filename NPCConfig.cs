@@ -24,7 +24,7 @@ namespace NPCControl
         [Label("Time in Ticks between NPC Checks")]
         [Range(0, 1000)]
         [Slider]
-        [DefaultValue(200)]
+        [DefaultValue(100)]
         public int TicksBetweenChecks;
 
         [Label("Invincible NPCs")]
