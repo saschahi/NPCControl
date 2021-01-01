@@ -37,11 +37,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj",
+      "projectUniqueName": "E:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj",
       "projectName": "NPCControl",
-      "projectPath": "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj",
+      "projectPath": "E:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\NPCControl.csproj",
       "packagesPath": "C:\\Users\\Saschahi\\.nuget\\packages\\",
-      "outputPath": "G:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\obj\\",
+      "outputPath": "E:\\Sascha\\Dokumente\\My Games\\Terraria\\ModLoader\\Mod Sources\\NPCControl\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -76,7 +76,7 @@
             "version": "[0.1.*, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
