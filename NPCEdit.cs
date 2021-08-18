@@ -11,33 +11,31 @@ namespace NPCControl
     {
         public static int Timer = 0;
         public static int Timermax = 200;
-        public static NPCConfig Karl = new NPCConfig();
+        public static NPCConfig Karl;
         public static Dictionary<int, bool> ListeUnbesiegbarer = new Dictionary<int, bool>();
         public static Dictionary<int, bool> ListeUnbesiegbarerLR = new Dictionary<int, bool>();
 
         public override bool PreAI(NPC npc)
         {
-            try
-            {
-                if (Timer >= Karl.TicksBetweenChecks)
-                {
-                    Timer = 0;
-                    NPC editednpc = EditNPC(npc);
-                    return base.PreAI(editednpc);
-                }
-                Timer++;
-            }
-            catch
+            if (Karl == null)
             {
                 GetNewConfig();
-                if (Timer >= Karl.TicksBetweenChecks)
+                if(Karl == null)
                 {
-                    Timer = 0;
-                    NPC editednpc = EditNPC(npc);
-                    return base.PreAI(editednpc);
+                    mod.Logger.Error("NPC Control couldn't get config.");
+                    return base.PreAI(npc);
                 }
-                Timer++;
             }
+
+            
+            
+            if (Timer >= Karl.TicksBetweenChecks)
+            {
+                Timer = 0;
+                NPC editednpc = EditNPC(npc);
+                return base.PreAI(editednpc);
+            }
+            Timer++;
             return base.PreAI(npc);
         }
         
@@ -76,10 +74,6 @@ namespace NPCControl
 
         public NPC EditNPC(NPC npc)
         {
-            if (Karl == null)
-            {
-                return npc;
-            }
             if (npc.active)
             {
                 NPCDefinition test = new NPCDefinition(npc.type);
@@ -162,9 +156,6 @@ namespace NPCControl
         public void GetNewConfig()
         {
             Karl = ModContent.GetInstance<NPCConfig>();
-        }
-
-
-        
+        }   
     }
 }
