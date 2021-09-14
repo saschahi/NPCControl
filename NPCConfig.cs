@@ -1,13 +1,5 @@
 ﻿using System.Collections.Generic;
 using Terraria.ModLoader.Config;
-using Terraria;
-using Terraria.ID;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using Terraria.ModLoader;
 using System.ComponentModel;
 

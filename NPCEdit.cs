@@ -76,10 +76,10 @@ namespace NPCControl
         {
             if (npc.active)
             {
-                NPCDefinition test = new NPCDefinition(npc.type);
+                //NPCDefinition test = new NPCDefinition(npc.type);
 
                 //Do not Spawn
-                if (Karl.DoNotSpawn.Contains(test))
+                if (Karl.DoNotSpawn.Find(x => npc.type == x.Type) != null)
                 {
                     npc.active = false;
                     //if he's not allowed to exist, we can just stop here.
@@ -87,7 +87,7 @@ namespace NPCControl
                 }
 
                 //Invincible
-                else if (Karl.MakeInvincible.Contains(test) || npc.townNPC && Karl.TownInvincible)
+                else if (Karl.MakeInvincible.Find(x => npc.type == x.Type) != null || npc.townNPC && Karl.TownInvincible)
                 {
                     if (!npc.dontTakeDamage)
                     {
@@ -108,7 +108,7 @@ namespace NPCControl
                         else
                         {
                             //"best way imo is just to override CanBeHitByItem and CanBeHitByProjectile, then return false if the npc shouldn't be hittable, null otherwise"
-                            if (npc.townNPC && Karl.TownInvincible && Karl.MakeInvincible.Contains(test))
+                            if (npc.townNPC && Karl.TownInvincible && Karl.MakeInvincible.Find(x => x.Type == npc.type) != null)
                             {
                                 npc.dontTakeDamage = false;
                                 npc.dontTakeDamageFromHostiles = false;
@@ -123,7 +123,7 @@ namespace NPCControl
                     }
                     else
                     {
-                        if (npc.townNPC && Karl.TownInvincible && Karl.MakeInvincible.Contains(test))
+                        if (npc.townNPC && Karl.TownInvincible && Karl.MakeInvincible.Find(x => x.Type == npc.type) != null)
                         {
                             npc.dontTakeDamage = false;
                             npc.dontTakeDamageFromHostiles = false;

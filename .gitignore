@@ -62,3 +62,10 @@ obj/NPCControl.csproj.nuget.dgspec.json
 obj/NPCControl.csproj.nuget.g.props
 obj/project.assets.json
 obj/project.nuget.cache
+.vs/NPCControl/DesignTimeBuild/.dtbcache.v2
+.vs/NPCControl/v16/.suo
+bin/Debug/net45/NPCControl.dll
+bin/Debug/net45/NPCControl.pdb
+bin/Debug/net45/tModLoader.exe
+bin/Debug/net45/tModLoader.pdb
+bin/Debug/net45/tModLoader.xml
