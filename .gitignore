@@ -1,5 +1,2 @@
-
-bin/Debug/net45/Newtonsoft.Json.dll
-obj/Debug/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs
-obj/Debug/net45/NPCControl.csproj.AssemblyReference.cache
-obj/Debug/net45/NPCControl.GeneratedMSBuildEditorConfig.editorconfig
+bin/debug/*
+obj/debug/*
