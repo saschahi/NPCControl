@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Terraria.Localization;
 using Terraria.ModLoader.Config;
 using Terraria.ModLoader;
 using System.ComponentModel;
@@ -43,7 +44,7 @@ namespace NPCControl
         [Tooltip("All NPCs in here will be prevented from Spawning")]
         public List<NPCDefinition> DoNotSpawn { get; set; } = new List<NPCDefinition>();
 
-        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
+        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message)
         {
             if (NPCControl.instance.herosmod != null)
             {

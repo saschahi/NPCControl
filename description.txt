@@ -1,5 +1,8 @@
 This Mod is the Successor of my 2 other mods "NPC Protector" and "Boss Controll"
 
+If you like this Mod you might also like my other Mod: Itemcontrol
+It lets you ban specific Items
+
 Are you annoyed from a certain type of Enemy and want to get rid of them all forever?
 
 Do you have a Dedicated Server and want more Control over NPCs?

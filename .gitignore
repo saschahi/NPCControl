@@ -1,2 +1,6 @@
-bin/debug/*
-obj/debug/*
+bin/Debug/*
+obj/Debug/*
+.vs/*
+Properties/*
+Localization/*
+workshop.json

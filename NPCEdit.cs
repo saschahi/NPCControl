@@ -22,7 +22,7 @@ namespace NPCControl
                 GetNewConfig();
                 if(Karl == null)
                 {
-                    mod.Logger.Error("NPC Control couldn't get config.");
+                    //mod.Logger.Error("NPC Control couldn't get config.");
                     return base.PreAI(npc);
                 }
             }
@@ -58,25 +58,27 @@ namespace NPCControl
 
         public override void SetDefaults(NPC npc)
         {
-            try
-            {
-                NPC editednpc = EditNPC(npc);
-                base.SetDefaults(editednpc);
-            }
-            catch
-            {
-                GetNewConfig();
-                NPC editednpc = EditNPC(npc);
-                base.SetDefaults(editednpc);
-            }
+            NPC editednpc = EditNPC(npc);
+            base.SetDefaults(editednpc);
             return;
         }
 
         public NPC EditNPC(NPC npc)
         {
+            if (Karl == null)
+            {
+                GetNewConfig();
+                if(Karl == null)
+                {
+                    return npc;
+                }
+            }
+
+
             if (npc.active)
             {
                 //NPCDefinition test = new NPCDefinition(npc.type);
+
 
                 //Do not Spawn
                 if (Karl.DoNotSpawn.Find(x => npc.type == x.Type) != null)

@@ -1,6 +1,7 @@
 using Terraria.ModLoader;
 using Terraria;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace NPCControl
 {
@@ -25,15 +26,20 @@ namespace NPCControl
             hasPermission = false;
         }
 
-        public override void PostAddRecipes()
+        public override void PostSetupContent()
         {
             SetupHerosMod();
-
+            base.PostSetupContent();
         }
+
         public override void Load()
         {
             instance = this;
-            herosmod = ModLoader.GetMod("HEROsMod");
+            if (ModLoader.TryGetMod("HEROsMod", out Mod herosMod))
+            {
+                herosmod = ModLoader.GetMod("HEROsMod");
+            }
+            //herosmod = ModLoader.GetMod("HEROsMod");
         }
 
         public NPCControl GetInstance()
@@ -52,7 +58,7 @@ namespace NPCControl
                     heropermission,
                     // Permission Display Name
                     heropermissiondisplayname);
-
+                /*
                 if (!Main.dedServ)
                 {
                     herosmod.Call(
@@ -61,7 +67,8 @@ namespace NPCControl
                         // Name of Permission governing the availability of the button/tool
                         heropermission,
                         // Texture of the button. 38x38 is recommended for HERO's Mod. Also, a white outline on the icon similar to the other icons will look good.
-                        GetTexture("NPCControl"),
+                        //GetTexture("NPCControl"),
+                        Assets.Request<Texture2D>("NPCControl"),
                         // A method that will be called when the button is clicked
                         (Action)NPCControlButtonPressed,
                         // A method that will be called when the player's permissions have changed
@@ -70,6 +77,7 @@ namespace NPCControl
                         (Func<string>)NPCControlTooltip
                     );
                 }
+                */
             }
         }
 
