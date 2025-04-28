@@ -4,3 +4,8 @@ obj/Debug/*
 Properties/*
 Localization/*
 workshop.json
+obj/NPCControl.csproj.nuget.dgspec.json
+obj/NPCControl.csproj.nuget.g.props
+obj/NPCControl.csproj.nuget.g.targets
+obj/project.assets.json
+obj/project.nuget.cache
